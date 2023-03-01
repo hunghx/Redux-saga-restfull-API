@@ -1,6 +1,9 @@
 import { call, put } from "redux-saga/effects";
 import * as product_service from "../api/product_services";
-import { get_product_success } from "../redux/actions/actions_product";
+import {
+  get_product_success,
+  get_product_by_status_success,
+} from "../redux/actions/actions_product";
 
 export function* get_all_product() {
   try {
@@ -33,6 +36,15 @@ export function* update_product(action) {
   try {
     yield call(product_service.put_product, action.payload);
     yield get_all_product();
+  } catch (error) {
+    console.log(error);
+  }
+}
+export function* get_product_by_status() {
+  try {
+    let response = yield call(product_service.get_products_by_status);
+
+    yield put(get_product_by_status_success(response.data));
   } catch (error) {
     console.log(error);
   }

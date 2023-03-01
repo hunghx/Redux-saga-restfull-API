@@ -29,3 +29,14 @@ export const update_product = (update_pro) => {
     payload: update_pro,
   };
 };
+export const get_product_by_status = () => {
+  return {
+    type: product_constant.GET_PRODUCT_BY_STATUS,
+  };
+};
+export const get_product_by_status_success = (data) => {
+  return {
+    type: product_constant.GET_PRODUCT_BY_STATUS_SUCCESS,
+    payload: data,
+  };
+};

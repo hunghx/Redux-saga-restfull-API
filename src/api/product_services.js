@@ -4,6 +4,9 @@ import instances from ".";
 export const get_all_products = async () => {
   return instances.get("products");
 };
+export const get_products_by_status = async () => {
+  return instances.get("products?status=true");
+};
 
 // Thêm mới 1 product
 export const post_new_products = async (newProduct) => {
